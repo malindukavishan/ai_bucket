@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI BUCKET - A clear path to the right ai tool</title>
+    <meta name="description"
+        content="Find the best AI tools for your needs. A comprehensive database of AI tools categorized for easy access.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pricing.css">
+    <link rel="stylesheet" href="css/neon.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <!-- Cursor Glow Element -->
+    <div id="cursor-glow"></div>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <!-- Floating Logos Background -->
+        <div id="loader-background"></div>
+
+        <div class="loader-content">
+            <h2 class="loader-text">AI BUCKET</h2>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <p style="margin-top: 10px; color: var(--text-secondary); font-size: 0.9rem;">Loading resources...</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="app" style="display: none;">
+        <!-- Home Background (New) -->
+        <div id="home-background"></div>
+
+        <header class="site-header">
+            <a href="#" class="logo">
+                <ion-icon name="rocket-outline" style="color: var(--accent-primary); font-size: 1.5rem;"></ion-icon>
+                AI BUCKET
+            </a>
+
+            <div class="header-controls">
+                <div class="search-container">
+                    <ion-icon name="search-outline" class="search-icon"></ion-icon>
+                    <input type="text" id="search-bar" placeholder="Search AI tools...">
+                </div>
+
+                <div class="categories-wrapper">
+                    <select id="category-select" style="margin-right: 10px;">
+                        <option value="All">All Categories</option>
+                        <option value="Favorites">♥ Favorites</option>
+                        <option value="Chat">Chat</option>
+                        <option value="Image">Image</option>
+                        <option value="Writing">Writing</option>
+                        <option value="Coding">Coding</option>
+                        <option value="Video">Video</option>
+                        <option value="Audio">Audio</option>
+                        <option value="Productivity">Productivity</option>
+                    </select>
+
+                    <select id="pricing-select">
+                        <option value="All">All Prices</option>
+                        <option value="Free">Free</option>
+                        <option value="Freemium">Freemium</option>
+                        <option value="Paid">Paid</option>
+                    </select>
+                </div>
+
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <ion-icon name="moon-outline"></ion-icon>
+                </button>
+            </div>
+        </header>
+
+        <section id="hero">
+            <h1 class="hero-title">A clear path to<br><span style="color: var(--accent-primary)">the right AI
+                    tool</span></h1>
+            <p class="hero-slogan">Curated database of the best artificial intelligence tools to supercharge your
+                workflow.</p>
+            <div class="hero-buttons">
+                <button class="filter-btn active" data-platform="All">All Platforms</button>
+                <button class="filter-btn" data-platform="Desktop">Desktop</button>
+                <button class="filter-btn" data-platform="Mobile">Mobile</button>
+            </div>
+        </section>
+
+        <main class="container">
+            <div id="tools-grid" class="tools-grid">
+                <!-- Tool cards will be injected here -->
+            </div>
+            <div id="no-results" class="hidden"
+                style="text-align: center; grid-column: 1/-1; padding: 40px; color: var(--text-secondary);">
+                <ion-icon name="search-outline" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></ion-icon>
+                <h3>No tools found</h3>
+                <p>Try adjusting your search or filters.</p>
+            </div>
+        </main>
+
+        <!-- Tool Details Modal -->
+        <div id="tool-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-header">
+                    <img id="modal-icon" src="" alt="" class="modal-icon-img">
+                    <div class="modal-title-group">
+                        <h2 id="modal-name">Tool Name</h2>
+                        <span id="modal-category" class="tool-category">Category</span>
+                    </div>
+                    <button id="modal-favorite-btn" class="modal-fav-btn" aria-label="Toggle Favorite">
+                        <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-desc">Description goes here...</p>
+                    <div class="modal-meta">
+                        <span id="modal-pricing" class="pricing-badge">Pricing</span>
+                        <div id="modal-platforms" class="platform-list"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a id="modal-link" href="#" target="_blank" class="visit-btn">
+                        Visit Website <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <div class="rating-section">
+                    <p>Rate our site:</p>
+                    <div class="stars" id="site-rating">
+                        <ion-icon name="star-outline" data-value="1"></ion-icon>
+                        <ion-icon name="star-outline" data-value="2"></ion-icon>
+                        <ion-icon name="star-outline" data-value="3"></ion-icon>
+                        <ion-icon name="star-outline" data-value="4"></ion-icon>
+                        <ion-icon name="star-outline" data-value="5"></ion-icon>
+                    </div>
+                </div>
+                <p>&copy; 2026 AI BUCKET. All rights reserved.</p>
+                <p style="margin-top: 5px; font-size: 0.9rem; opacity: 0.7;">mkavishanpvt@gmail.com</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Main script (removed type="module" for compatibility) -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

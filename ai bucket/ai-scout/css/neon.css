@@ -1,0 +1,92 @@
+/* Neon Effects */
+
+/* Keyframes */
+@keyframes neon-glow {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px rgba(124, 58, 237, 0.5),
+            0 0 20px rgba(124, 58, 237, 0.3),
+            0 0 30px rgba(124, 58, 237, 0.2);
+    }
+
+    50% {
+        text-shadow:
+            0 0 15px rgba(124, 58, 237, 0.8),
+            0 0 25px rgba(124, 58, 237, 0.5),
+            0 0 35px rgba(124, 58, 237, 0.4),
+            0 0 45px rgba(124, 58, 237, 0.2);
+    }
+}
+
+@keyframes neon-box-pulse {
+    0% {
+        box-shadow: 0 0 5px rgba(124, 58, 237, 0.2), 0 0 10px rgba(124, 58, 237, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 0 15px rgba(124, 58, 237, 0.4), 0 0 25px rgba(124, 58, 237, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(124, 58, 237, 0.2), 0 0 10px rgba(124, 58, 237, 0.1);
+    }
+}
+
+/* Apply to Elements */
+
+/* 1. Hero Title Neon Text */
+[data-theme="dark"] .hero-title span {
+    animation: neon-glow 2s infinite ease-in-out alternate;
+}
+
+/* 2. Card Hover Neon Effect */
+[data-theme="dark"] .tool-card:hover {
+    border-color: var(--accent-primary);
+    animation: neon-box-pulse 1.5s infinite ease-in-out;
+}
+
+/* 3. Filter Buttons Active State */
+[data-theme="dark"] .filter-btn.active {
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
+}
+
+/* 4. Search Focus */
+[data-theme="dark"] #search-bar:focus {
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+}
+
+/* Light Mode Subtle Glow (Optional, but usually neon implies dark) */
+.hero-title span {
+    transition: text-shadow 0.3s ease;
+}
+
+.hero-title span:hover {
+    text-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+}
+
+/* Cursor Glow Effect */
+#cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(124, 58, 237, 0) 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+    /* Behind content but in front of body bg */
+    mix-blend-mode: screen;
+    /* Enhance glow */
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    /* Hidden by default, shown via JS or specific theme rules */
+}
+
+/* Only show in dark mode */
+[data-theme="dark"] #cursor-glow {
+    opacity: 1;
+}
